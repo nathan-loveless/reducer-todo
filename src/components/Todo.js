@@ -1,11 +1,17 @@
 import React from 'react';
 import '../components/Todo';
 import './Todo.css';
+import {todoList} from '../reducers/Reducers';
 
-const Todo = (props) => {
+const Todo = () => {
+
 
     return (
-      <div>Todo.js
+      <div>
+        {todoList.map(todo => (
+          <div>{todo.item}</div>
+        ))}
+        
       </div>
     );
   }
