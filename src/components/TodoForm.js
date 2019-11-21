@@ -1,7 +1,7 @@
 import React, { useState, useReducer } from 'react';
 import Todo from './Todo';
 import {todoReducer, todoList} from '../reducers/Reducers';
-import { ADD_TODO, CLEAR_COMPLETED_TODOS, MARK_COMPLETED} from '../actions/ReducerActions';
+import { ADD_TODO, CLEAR_COMPLETED_TODOS } from '../actions/ReducerActions';
 
 
 const TodoForm = () => {
@@ -26,7 +26,7 @@ const TodoForm = () => {
           type="text"
           name="addTodo"          
         />
-        <button onClick={() => { todoList.push({item: task, completed: false, id: Date.now()}) 
+        <button onClick={() => { todoList.push({item: task, completed: false, completedClass: ' todo', id: Date.now()}) 
                                   dispatch({type: ADD_TODO, payload: todoList})}}>Add Todo</button>
         <button onClick={() => {dispatch({type: CLEAR_COMPLETED_TODOS})}}>Clear Completed</button>
       </form>

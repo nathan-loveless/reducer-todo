@@ -1,25 +1,31 @@
 import React from 'react';
-import { ADD_TODO, CLEAR_COMPLETED_TODOS, MARK_COMPLETED } from '../actions/ReducerActions';
+import { ADD_TODO, CLEAR_COMPLETED_TODOS, TOGGLE_COMPLETED, SET_CLASSNAME } from '../actions/ReducerActions';
 
 export const todoList = [
   {
     item: 'Learn about reducers',
     completed: false,
+    completedClass: ' todo',
     id: 3892987589
   }
 ]
 
   
   export const todoReducer = (state, action) => { 
-    console.log('NL: Reducers.js: todoReducer: ', state); 
-    console.log('NL: Reducers.js: todoReducer: ', action.payload);  
     switch (action.type) {
       case ADD_TODO: 
         const item = action.payload;      
-        return {...state, item}
+        return {...state, item};
+      
+      case SET_CLASSNAME:
+        return {...state, completedClass: state.completedClass + action.payload};
+      
+      case TOGGLE_COMPLETED:
+        return {...state, completed: !state.completed};
+      
       
       case CLEAR_COMPLETED_TODOS: return { ...state, editing: !state.editing };
-        case MARK_COMPLETED: return { ...state, editing: !state.editing };
+
         default: return state;
     }
   };
