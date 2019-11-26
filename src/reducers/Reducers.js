@@ -18,7 +18,7 @@ export const todoList = [
         return {...state, item};
       
       case SET_CLASSNAME:
-        return {...state, completedClass: state.completedClass + action.payload};
+        return {...state, completedClass: action.payload};
       
       case TOGGLE_COMPLETED:
         return {...state, completed: !state.completed};
@@ -29,3 +29,15 @@ export const todoList = [
         default: return state;
     }
   };
+
+      // const handleClick = e => {
+    //   e.preventDefault(); 
+    //   for(let i = 0; i < state.length; i++)
+    //   {
+    //     dispatch({ type: TOGGLE_COMPLETED})
+    //     if(state[i].completed) { dispatch({type: SET_CLASSNAME, payload: ' completed'})}
+    //     else { dispatch({type: SET_CLASSNAME, payload: ' todo'})}
+    //   }
+      
+    //   console.log('NL: Todo.js: handleClick (AfterLoop): ', state);
+    // };

@@ -1,7 +1,7 @@
 import React, { useState, useReducer } from 'react';
 import Todo from './Todo';
 import {todoReducer, todoList} from '../reducers/Reducers';
-import { ADD_TODO, CLEAR_COMPLETED_TODOS } from '../actions/ReducerActions';
+import { ADD_TODO, CLEAR_COMPLETED_TODOS, SET_CLASSNAME, TOGGLE_COMPLETED } from '../actions/ReducerActions';
 
 
 const TodoForm = () => {
@@ -16,10 +16,16 @@ const TodoForm = () => {
     setTask(e.target.value);
   };
 
+  const todoCompleted = () => {
+    dispatch({type: SET_CLASSNAME, payload: 'todo' + ' completed'});
+    dispatch({type: TOGGLE_COMPLETED});
+    console.log('NL: TodoForm.js: todoCompleted reached', state)
+  };
+
 
     return (
       <div> 
-        <Todo />       
+       <Todo completed={todoCompleted}/>
         <form onSubmit={handleSubmit}>
         <input
           onChange={handleChanges}
@@ -30,6 +36,7 @@ const TodoForm = () => {
                                   dispatch({type: ADD_TODO, payload: todoList})}}>Add Todo</button>
         <button onClick={() => {dispatch({type: CLEAR_COMPLETED_TODOS})}}>Clear Completed</button>
       </form>
+      
         </div>
     );
 }
