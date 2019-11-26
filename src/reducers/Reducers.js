@@ -1,7 +1,7 @@
 import React from 'react';
 import { ADD_TODO, CLEAR_COMPLETED_TODOS, TOGGLE_COMPLETED, SET_CLASSNAME } from '../actions/ReducerActions';
 
-export const todoList = [
+export const initialState = [
   {
     item: 'Learn about reducers',
     completed: false,

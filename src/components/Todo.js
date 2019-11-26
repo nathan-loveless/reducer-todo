@@ -1,7 +1,7 @@
 import React/*, { useReducer }*/ from 'react';
 import '../components/Todo';
 import './Todo.css';
-import {todoList} from '../reducers/Reducers';
+import {initialState} from '../reducers/Reducers';
 
 const Todo = (props) => {
 
@@ -23,7 +23,7 @@ const Todo = (props) => {
     return (
       <>
       <div>
-        {todoList.map(todo => (
+        {initialState.map(todo => (
           <div onClick={handleClick}>
             <p>{todo.item}</p>
           </div>
