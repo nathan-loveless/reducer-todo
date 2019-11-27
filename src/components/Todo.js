@@ -1,37 +1,38 @@
 import React/*, { useReducer }*/ from 'react';
 import '../components/Todo';
 import './Todo.css';
-import {initialState} from '../reducers/Reducers';
+import { initialState } from '../reducers/Reducers';
+import { TOGGLE_COMPLETED } from '../actions/ReducerActions';
 
 const Todo = (props) => {
 
   //const [state, dispatch] = useReducer(todoReducer, todoList);
 
 
-  //let updatedClassCompletion = ' todo';
+  let updatedClassCompletion = ' todo';
+  console.log(props.state[0]);
 
-    
-    const handleClick = e => {
-      //e.preventDefault(); 
-      props.completed();
-      // props.dispatch({type: SET_CLASSNAME, payload: updatedClassCompletion + ' completed'});
-      // props.dispatch({type: TOGGLE_COMPLETED})
-      // console.log('NL: Todo.js: handleClick ', props.state);
+  //props.state.item.map(item => (console.log(item)));
 
-    };
-
-    return (
-      <>
-      <div>
-        {initialState.map(todo => (
-          <div onClick={handleClick}>
-            <p>{todo.item}</p>
-          </div>
-        ))}
-        
-      </div>
-      </>
-    );
+  if (props.todo.completed) {
+    updatedClassCompletion += ' completed';
   }
+
+
+  const handleClick = e => {
+    e.preventDefault();
+    props.dispatch({ type: TOGGLE_COMPLETED })
+  };
+
+  return (
+    <>
+      <div>
+        <div onClick={handleClick} className={updatedClassCompletion}>
+          <p>{props.todo.item}</p>
+        </div>
+      </div>
+    </>
+  );
+}
 
 export default Todo;
